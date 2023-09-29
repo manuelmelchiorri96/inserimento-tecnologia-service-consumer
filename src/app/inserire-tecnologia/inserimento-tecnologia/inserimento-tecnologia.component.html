@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <h1>Inserisci Tecnologia</h1>
+
+  <form (ngSubmit)="inserisciTecnologia()" #tecnologiaForm="ngForm">
+    <div class="mb-3">
+      <label for="tecnologiaInput" class="form-label">Nome Tecnologia</label>
+      <input
+        type="text"
+        class="form-control"
+        id="tecnologiaInput"
+        [(ngModel)]="tecnologia.nome"
+        name="nome"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="categoriaSelect" class="form-label">Categoria</label>
+      <select
+        class="form-select"
+        id="categoriaSelect"
+        name="categoria"
+        [(ngModel)]="tecnologia.categoria"
+        required
+      >
+        <option *ngFor="let categoria of categorie" [ngValue]="categoria">
+          {{ categoria.nome }}
+        </option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!tecnologiaForm.valid"
+    >
+      Inserisci Tecnologia
+    </button>
+  </form>
+</div>
